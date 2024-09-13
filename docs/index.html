@@ -15,11 +15,34 @@
   <script>
     window.$docsify = {
       name: 'CoralFans',
-      repo: 'https://github.com/CoralFans-Dev/CoralFans'
+      repo: 'https://github.com/CoralFans-Dev/CoralFans',
+      loadSidebar: true,
+      loadNavbar: true,
+      coverpage: true,
+      maxLevel: 5,
+      subMaxLevel: 4,
+      mergeNavbar: true,
+      search: {
+        maxAge: 86400000,
+        paths: 'auto',
+        placeholder: '搜索',
+        placeholder: {
+          '/zh-cn/': '搜索',
+          '/': 'Type to search'
+        },
+        noData: '找不到结果',
+        depth: 4,
+        hideOtherSidebarContent: false,
+        namespace: 'CoralFans-Document',
+      }
     }
   </script>
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
 </body>
 
 </html>
