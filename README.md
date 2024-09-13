@@ -1,2 +1,3 @@
 # CoralFans-doc
-docs of CoralFans
+
+Docs of CoralFans Mod.
