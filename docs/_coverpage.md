@@ -1,4 +1,4 @@
-![icon](https://github.com/CoralFans-Dev/CoralFans-doc/blob/main/docs/icon.png)
+![icon](https://raw.githubusercontent.com/CoralFans-Dev/CoralFans-doc/main/docs/icon.png)
 
 # CoralFans <small>0.0.1</small>
 
