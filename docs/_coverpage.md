@@ -1,4 +1,4 @@
-# CoralFans文档
+# CoralFans <small>0.0.1</small>
 
 > 这里是CoralFans Mod的文档站
 

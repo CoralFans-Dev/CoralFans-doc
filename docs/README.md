@@ -1,7 +1,4 @@
 # CoralFans-doc
 
-+ 内容建设中...
-
-```bash
-echo test
-```
++ 点击目录栏 `MainDoc` 阅读
++ 欢迎参与文档站建设
