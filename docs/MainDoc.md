@@ -9,7 +9,9 @@
 + 拥有调整全局功能配置的能力
 
 ```text
+/func autoitem <IsOpen: Boolean>
 /func autotool <IsOpen: Boolean>
+/func autototem <IsOpen: Boolean>
 /func containerreader <IsOpen: Boolean>
 /func droppernocost <IsOpen: Boolean>
 /func forceopen <IsOpen: Boolean>
@@ -20,7 +22,9 @@
 /func safeexplode <IsOpen: Boolean>
 ```
 
++ `func autoitem` 自动替换物品
 + `func autotool` 自动切换工具
++ `func autototem` 自动替换图腾
 + `func containerreader` 容器预览
 + `func droppernocost` 投掷器不消耗物品
 + `func forceopen` 强制开启容器
@@ -31,21 +35,25 @@
 + `func noclip` 创造模式无碰撞箱
 + `func safeexplode` 爆炸不破坏地形
 
-+ func可以开启或者关闭部分功能的全局开关。功能分为两类，全局功能和个人功能。对于个人功能，需要使用func和self同时开启该功能才会生效；对于全局功能，只需要使用func指令开启，该功能则会令全服务器的所有玩家生效。
++ `func` 可以开启或者关闭部分功能的全局开关。功能分为两类，全局功能和个人功能。对于个人功能，需要使用 `func` 和 `self` 同时开启该功能才会生效；对于全局功能，只需要使用 `func` 指令开启，该功能则会令全服务器的所有玩家生效。
 
 ## self
 
 + 拥有调整个人功能配置的能力
 
 ```text
+/self autoitem <IsOpen: Boolean>
 /self autotool <IsOpen: Boolean>
 /self autotool mindamage <mindamage: int>
+/self autototem <IsOpen: Boolean>
 /self containerreader <IsOpen: Boolean>
 /self noclip <IsOpen: Boolean>
 ```
 
++ `func autoitem` 自动替换物品
 + `self autotool` 自动切换工具
   + `self autotool mindamage` 可以设置工具最小耐久值。低于耐久值的工具不会被自动选择
++ `func autototem` 自动替换图腾
 + `self containerreader` 容器预览
 + `self noclip` 创造模式无碰撞箱
 
@@ -116,6 +124,44 @@
   + 地狱堡垒 绿色
   + 海底神殿 黄色
   + 掠夺者前哨站 蓝色
+
+## cfhud
+
++ 拥有在屏幕上实时显示文字信息的能力
+
+```text
+/cfhud <add|remove> <hopper:redstone:village:mspt:base>
+/cfhud show <IsOpen: Boolean>
+```
++ `cfhud <add|remove>` 添加或删除hud上显示的内容
+  + `base` 显示一些基本的信息，包括当前游戏刻度，玩家坐标，视角，指向的方块坐标，和亮度，当前所处位置的群系等等
+  + `hopper` 显示指针指向该混泥土所在频道(漏斗计数器)的信息
+  + `mspt` 显示服务器最近`1s`的平均mspt和TPS
+  + `redstone` 显示红石相关信息
+  + `village` 显示指针指向的村民绑定的POI等信息
++ `cfhud show` cfhud功能总开关
+
+## data
+
++ 拥有显示方块/实体/物品数据的能力
+
+```text
+/data block
+/data blockentity
+/data entity
+/data item
+/data redstone <chunk|info|signal|conn> [blockPos: x y z]
+```
+
++ `data block [blockPos: x y z] ...` 打印位于 `blockPos` 位置的方块ID,名字等信息,该值缺省时默认为玩家指针指向的方块
++ `data blockentity ...` 打印方块实体的相关信息
++ `data entity ... ` 打印玩家指针指向的实体ID,名字,位置等信息
++ `data item ...` 打印手持物品的相关信息
++ `data redstone <chunk|conn|signal> [blockPos: x y z]` 打印位于 `blockPos` 位置的红石相关信息，该值缺省时默认为玩家指针指向的方块
+  + `signal` 展示红石原件的信号强度
+  + `info` 展示红石元件的基本性质
+  + `chunk` 标记区块的所有红石原件
+  + `conn` 标记原件(绿色框)、为该原件的所有信号源(红色框)以及该原件提供能量的所有消费者或者电容器(黄色框)
 
 ## counter
 
