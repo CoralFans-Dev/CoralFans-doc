@@ -14,10 +14,6 @@
 
 ## 1.安装BDS以及LeviLamina
 
-> ### Tip
->
-> 由于 `CoralFans` 的前置 [BedrockServerClientInterface](https://github.com/OEOTYAN/BedrockServerClientInterface) 并没有发布可供下载的二进制包,故本插件暂时无法使用 `Lip` 安装
-
 CoralFans插件依赖于LeviLamina加载器,而LeviLamina基于BedrockDedicatedServer(简称BDS)官方服务端,所以在使用本插件前,你需要安装BDS和LeviLamina。
 
 + Windows安装参考[LeviLamina中文安装教程](https://levilamina.liteldev.com/zh/install/)
@@ -33,13 +29,15 @@ CoralFans插件依赖于LeviLamina加载器,而LeviLamina基于BedrockDedicatedS
 
 ## 2.下载并安装前置
 
-1. 克隆[前置插件](https://github.com/OEOTYAN/BedrockServerClientInterface)并[编译](https://xmake.io/#/),编译后放入服务端根目录下的 `plugins` 文件夹
+1. 使用lip进行安装: `lip install github.com/OEOTYAN/BedrockServerClientInterface` .
 2. 在[前置插件](https://github.com/OEOTYAN/BedrockServerClientInterface)的 `assets` 文件夹下找到材质包,打包并安装进游戏,全局启用
 
 ## 3.下载并安装插件本体
 
-1. 前往[CoralFans的下载页面](https://github.com/CoralFans-Dev/CoralFans/releases)下载发布的release文件
-2. 将解压后的插件放入服务端根目录下的 `plugins` 文件夹
++ 使用lip进行安装: `lip install github.com/CoralFans-Dev/CoralFans` .
++ 也可以手动安装
+  1. 前往[CoralFans的下载页面](https://github.com/CoralFans-Dev/CoralFans/releases)下载发布的release文件
+  2. 将解压后的插件放入服务端根目录下的 `plugins` 文件夹
 
 ## 4.配置配置文件
 
