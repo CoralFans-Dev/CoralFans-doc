@@ -15,7 +15,18 @@
   + `description` 自定义短命令的描述，对 `command` type有效
   + `permission` 自定义短命令的权限，对 `command` type有效。可选值同[config - adminPermission](/ConfigDoc.md#adminpermission)
   + `prevent` 是否拦截原有事件触发
-  + `actions` 要执行的指令序列
+  + `actions` 要执行的指令序列。您可以在其中使用一些内建变量，他们会在执行时被替换。
+    + `{selfname}` 执行者真名
+    + `{selfx}` 执行者x坐标
+    + `{selfy}` 执行者y坐标
+    + `{selfz}` 执行者z坐标
+    + `{itemname}` 使用的物品的名称（对 `use` `useon` `destroy` type有效）
+    + `{itemaux}` 使用的物品的特殊值（对 `use` `useon` `destroy` type有效）
+    + `{blockname}` 对准方块的名称（对 `useon` type有效）
+    + `{blockvariant}` 对准方块的特殊值（对 `useon` type有效）
+    + `{blockx}` 对准方块的x坐标（对 `useon` type有效）
+    + `{blocky}` 对准方块的y坐标（对 `useon` type有效）
+    + `{blockz}` 对准方块的z坐标（对 `useon` type有效）
 
 ## 举例
 
