@@ -86,18 +86,5 @@
 ## shortcuts
 
 + 自定义快捷指令
-  + `enable` 是否开启
-  + `type` 快捷指令类型
-    + `use` 玩家使用物品
-    + `useon` 玩家对着方块使用物品
-    + `destroy` 玩家使用物品破坏任意方块
-    + `command` 自定义命令
-  + `item` 玩家手持物品，对 `use` `useon` `destroy` type有效
-  + `blcok` 玩家点击的方块，对 `useon` type有效
-  + `command` 自定义的短命令，对 `command` type有效
-  + `description` 自定义短命令的描述，对 `command` type有效
-  + `permission` 自定义短命令的权限，对 `command` type有效。可选值同[adminPermission](#adminpermission)
-  + `prevent` 是否拦截原有事件触发
-  + `actions` 要执行的指令序列
 
 > `shortcuts` 是一项非常强大的配置功能。仙人掌扳手、仙人掌点击混凝土打印漏斗计数器信息皆依赖此功能。
