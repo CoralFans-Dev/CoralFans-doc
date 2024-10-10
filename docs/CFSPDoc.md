@@ -4,11 +4,9 @@
 >
 > CFSP假人的XUID是固定的，等于 `"-" + std::to_string(std::hash<std::string>()(spname))`
 >
-> 当前版本(BDS v1.21.3.01)MCBE中，假人在设置视角后的1 tick会自动将视角回正。
+> 当前版本(BDS v1.21.3.01)MCBE中，假人在设置视角后的1 tick会自动将视角回正。脚本中可以设置视角后立刻执行动作以规避此问题。
 >
-> 脚本中可以设置视角后立刻执行动作以规避此问题。
->
-> 非正常关服可能会造成数据丢失。插件不为此负责。
+> 使用非 `stop` 指令执行的关服操作可能会造成数据丢失。插件不为此负责。
 
 ## 指令系统
 
@@ -19,8 +17,8 @@
 /sp list p
 /sp g <name: string> create
 /sp g <name: string> delete
-/sp g <name: string> add <simplayer: string>
-/sp g <name: string> rm <simplayer: string>
+/sp g <name: string> addsp <simplayer: string>
+/sp g <name: string> rmsp <simplayer: string>
 /sp g <name: string> addadmin <player: Player>
 /sp g <name: string> rmadmin <player: Player>
 /sp p <name: string> spawn
@@ -93,8 +91,8 @@
 
 + `create` 创建组
 + `delete` 删除组
-+ `add <simplayer: string>` 加入假人
-+ `rm <simplayer: string>` 移出假人
++ `addsp <simplayer: string>` 加入假人
++ `rmsp <simplayer: string>` 移出假人
 + `addadmin <player: Player>` 加入成员
 + `rmadmin <player: Player>` 移出成员
 
