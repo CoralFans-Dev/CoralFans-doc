@@ -1,53 +1,206 @@
 # CoralFans
 
-+ CoralFans文档 建设者[JiaLe1135](https://github.com/JiaLe1135) [odorajbotoj](https://github.com/odorajbotoj)
-
 ---
+
+## coralfans
+
++ 关于 CoralFans Mod
+
+```text
+/coralfans version
+```
+
++ `coralfans version` 打印当前版本信息
+
+## cfhud
+
++ HUD信息显示
+
+```text
+/cfhud show <isopen: Boolean>
+/cfhud <add|remove> <mspt|base|redstone|village|hopper|block>
+```
+
++ `cfhud show` 配置是否显示信息
++ `cfhud add` 增加一条显示项
++ `cfhud remove` 删除一条显示项
+  + `mspt` - mspt与tps信息
+  + `base` - 基本信息，如当前坐标、区块等
+  + `redstone` - 红石信息，等同于执行 `data redstone info`
+  + `village` - 村民信息，等同于执行 `village dweller`
+  + `hopper` - 漏斗计数器信息，等同于执行 `counter print`
+  + `block` - 方块信息，等同于执行 `data block`
+
+## counter
+
++ 漏斗计数器
+
+```text
+/counter print [channel: int]
+/counter reset [channel: int]
+```
+
++ 在使用 `func hoppercounter true` 开启漏斗计数器后，所有对准混凝土的漏斗都将变成无尽的漏斗，所有流向该漏斗的物品都会消失，但是这些数据会被插件记录下来，你可以使用 `/counter` 命令查看这些数据。16种混凝土每一种对应一个频道（根据特殊值）。
+  + `/counter print [channel: int]` 打印频道channel的数据
+  + `/counter reset [channel: int]` 清除频道channel的数据
+  + 不指定频道时，插件会获取指向的漏斗或混凝土对应频道的数据
++ 注意：从使用 `func hoppercounter true` 这一刻开始漏斗计数器就开始计时了，而不是其他时间。数据在服务器关闭时不会保存。
+
+## data
+
++ 获取方块或实体等的信息
+
+```text
+/data block [blockPos: x y z]
+/data block nbt [path: string]
+/data block <blockPos: x y z> nbt [path: string]
+/data blockentity nbt [path: string]
+/data blockentity <blockPos: x y z> nbt [path: string]
+/data blockentity highlight [radius: int] [time: int]
+/data entity
+/data entity nbt [path: string]
+/data redstone <signal|info|chunk|conn> [blockPos: x y z]
+/data item nbt [path: string]
+/data player <player: Player> uuid
+```
+
++ `data block` 获取方块信息
++ `data blockentity` 获取方块实体信息
++ `data entity` 获取实体信息
++ `data item` 获取手持物品信息
+  + `nbt` 用于指定获取nbt信息
+  + `path` 是可选参数，用于访问特定的Nbt Tag。如 `a.b[1].c` 指向根标签下a标签下b数组的第二个元素的c标签。
++ `data redstone` 获取红石原件信息
+  + `chunk` 标记所在区块的所有红石原件
+  + `signal` 打印信号相关信息
+  + `info` 打印红石基本信息
+  + `conn` 标记指定原件（绿色）、子原件（黄色）、父原件（红色）
++ `data player` 获取指定玩家的UUID
 
 ## func
 
 + 拥有调整全局功能配置的能力
 
 ```text
-/func autotool <IsOpen: Boolean>
-/func containerreader <IsOpen: Boolean>
-/func droppernocost <IsOpen: Boolean>
 /func forceopen <IsOpen: Boolean>
 /func forceplace <all|entity|normal>
-/func huoppercounter <IsOpen: Boolean>
-/func maxpt <maxpt: int>
 /func noclip <IsOpen: Boolean>
+/func droppernocost <IsOpen: Boolean>
 /func safeexplode <IsOpen: Boolean>
+/func autotool <IsOpen: Boolean>
+/func hoppercounter <IsOpen: Boolean>
+/func maxpt <maxpt: int>
+/func containerreader <IsOpen: Boolean>
+/func autototem <IsOpen: Boolean>
+/func autoitem <IsOpen: Boolean>
+/func fastdrop <IsOpen: Boolean>
 ```
 
-+ `func autotool` 自动切换工具
-+ `func containerreader` 容器预览
-+ `func droppernocost` 投掷器不消耗物品
 + `func forceopen` 强制开启容器
 + `func forceplace` 方块强制放置
   + `all` 表示无视所有限制, `entity` 表示无视实体, `normal`表示正常模式
-+ `func huoppercounter` 漏斗计数器
-+ `func maxpt` 最大计划刻
 + `func noclip` 创造模式无碰撞箱
++ `func droppernocost` 投掷器不消耗物品
 + `func safeexplode` 爆炸不破坏地形
++ `func autotool` 自动切换工具
++ `func hoppercounter` 漏斗计数器
++ `func maxpt` 最大计划刻
++ `func containerreader` 容器预览
++ `func autototem` 自动补充图腾
++ `func autoitem` 物品自动补货
++ `func fastdrop` 快速扔出背包所有同类物品
 
 + func可以开启或者关闭部分功能的全局开关。功能分为两类，全局功能和个人功能。对于个人功能，需要使用func和self同时开启该功能才会生效；对于全局功能，只需要使用func指令开启，该功能则会令全服务器的所有玩家生效。
+
+## hsa
+
++ 拥有在游戏内可视化结构生成区域(HSA)的能力
+
+```text
+/hsa show <isopen: Boolean>
+```
+
++ `hsa show` 开启或者关闭HSA显示，开启后插件会在游戏内有HSA的地方使用粒子画出结构的刷怪点（需要前置Mod与对应材质包），对于游戏内的四种刷怪点，插件有不同的颜色，具体如下所示：
+  + 女巫小屋 红色
+  + 地狱堡垒 绿色
+  + 海底神殿 黄色
+  + 掠夺者前哨站 蓝色
+
+## log
+
++ 打印一些信息
+
+```text
+/log levelseed
+/log pt
+```
+
++ `log levelseed` 打印存档种子
++ `log pt` 打印玩家所在区块的计划刻信息
+
+## prof
+
++ 拥有检查服务器健康程度以及定位卡顿源头的能力
+
+```text
+/prof [normal|entity|chunk|pt] [numberOfTick: int]
+```
+
++ `prof normal` 进行普通的profile,会列出游戏多个条目的执行时间
++ `prof entity` 对实体更新进行profile
++ `prof chunk` 对区块更新进profile（列出的坐标为区块坐标）
++ `prof pt` 对计划刻进行profile
++ `numberOfTick` 是选填参数，指定prof需要执行的gt数，不填时默认为100gt
+
+## rotate
+
++ 旋转方块
+
+```text
+/rotate
+```
+
++ `rotate` 可以旋转指向的方块
 
 ## self
 
 + 拥有调整个人功能配置的能力
 
 ```text
+/self noclip <IsOpen: Boolean>
 /self autotool <IsOpen: Boolean>
 /self autotool mindamage <mindamage: int>
 /self containerreader <IsOpen: Boolean>
-/self noclip <IsOpen: Boolean>
+/self autototem <IsOpen: Boolean>
+/self autoitem <IsOpen: Boolean>
+/self fastdrop <IsOpen: Boolean>
 ```
 
++ `self noclip` 创造模式无碰撞箱
 + `self autotool` 自动切换工具
   + `self autotool mindamage` 可以设置工具最小耐久值。低于耐久值的工具不会被自动选择
 + `self containerreader` 容器预览
-+ `self noclip` 创造模式无碰撞箱
++ `self autototem` 自动补充图腾
++ `self autoitem` 物品自动补货
++ `self fastdrop` 快速扔出背包所有同类物品
++ 当对应的功能没有在 `func` 指令中全局开启时， `self` 指令会一直将其配置为 `false`
+
+## slime
+
++ 拥有可视化史莱姆区块的能力
+
+```text
+/slime check
+/slime show <IsOpen: Boolean>
+```
+
++ `slime check` 检测当前区块是否为史莱姆区块
++ `slime show` 开启或关闭史莱姆区块可视化
+
+## sp
+
++ 假人
++ 参见[CFSPDoc](/CFSPDoc.md)
 
 ## tick
 
@@ -60,7 +213,7 @@
 /tick step <step: int>
 ```
 
-+ `tick query` 查询MSPT与TPS
++ `tick query` 查询MSPT
 + `tick freeze` 暂停tick执行
 + `tick reset` 重置游戏速率至正常
 + `tick rate` 设置游戏速率，原版为20tps
@@ -88,113 +241,3 @@
 + `village list` 列出所有正在加载的村庄
 + `village info <id: softenum>` 显示指定VID或UUID的村庄的信息
 + `village dweller` 获取指向实体（村民）的信息
-
-## prof
-
-+ 拥有检查服务器健康程度以及定位卡顿源头的能力
-
-```text
-/prof [normal|entity|chunk|pt] [numberOfTick: int]
-```
-
-+ `prof normal` 进行普通的profile,会列出游戏多个条目的执行时间
-+ `prof entity` 对实体更新进行profile
-+ `prof chunk` 对区块更新进profile（列出的坐标为区块坐标）
-+ `prof pt` 对计划刻进行profile（暂时无法工作）
-+ `numberOfTick` 是选填参数，指定prof需要执行的gt数，不填时默认为100gt
-
-## hsa
-
-+ 拥有在游戏内可视化结构生成区域(HSA)的能力
-
-```text
-/hsa show <isopen: Boolean>
-```
-
-+ `hsa show` 开启或者关闭HSA显示，开启后插件会在游戏内有HSA的地方使用粒子画出结构的刷怪点（需要前置Mod与对应材质包），对于游戏内的四种刷怪点，插件有不同的颜色，具体如下所示：
-  + 女巫小屋 红色
-  + 地狱堡垒 绿色
-  + 海底神殿 黄色
-  + 掠夺者前哨站 蓝色
-
-## counter
-
-+ 拥有查看漏斗接受物品速度的能力
-
-```text
-/counter print [channel: int]
-/counter reset [channel: int]
-```
-
-+ 在使用 `func hoppercounter true` 开启漏斗计数器后，所有对准混凝土的漏斗都将变成无尽的漏斗，所有流向该漏斗的物品都会消失，但是这些数据会被插件记录下来，你可以使用 `/counter` 命令查看这些数据。16种混凝土每一种对应一个频道（根据特殊值）。
-  + `/counter print [channel: int]` 打印频道channel的数据
-  + `/counter reset [channel: int]` 清除频道channel的数据
-  + 不指定频道时，插件会获取指向的漏斗或混凝土对应频道的数据
-+ 注意：从使用 `func hoppercounter true` 这一刻开始漏斗计数器就开始计时了，而不是其他时间。
-
-## slime
-
-+ 拥有可视化史莱姆区块的能力
-
-```text
-/slime check
-/slime show <IsOpen: Boolean>
-```
-
-+ `slime check` 检测当前区块是否为史莱姆区块
-+ `slime show` 开启或关闭史莱姆区块可视化
-
-## rotate
-
-+ 旋转方块
-
-```text
-/rotate
-```
-
-+ `rotate` 可以旋转指向的方块
-
-## 配置文件
-
-### version
-
-+ 配置文件的版本。 `0.0.1` 版CoralFans为 `1`
-
-### locateName
-
-+ 插件语言。支持 `zh_CN` 与 `en_US`
-
-### command
-
-+ 指令配置。可以指定指令是否开启与执行所需权限。权限可选值如下
-  + `Any`
-  + `GameDirectors`
-  + `Admin`
-  + `Host`
-  + `Owner`
-  + `Internal`
-
-### shortcuts
-
-+ 自定义快捷指令
-  + `enable` 是否开启
-  + `type` 快捷指令类型
-    + `use` 玩家使用物品
-    + `useon` 玩家对着方块使用物品
-    + `destroy` 玩家使用物品破坏任意方块
-    + `command` 自定义命令
-  + `item` 玩家手持物品，对 `use` `useon` `destroy` type有效
-  + `blcok` 玩家点击的方块，对 `useon` type有效
-  + `command` 自定义的短命令，对 `command` type有效
-  + `description` 自定义短命令的描述，对 `command` type有效
-  + `permission` 自定义短命令的权限，对 `command` type有效。可选值如下
-    + `Any`
-    + `GameDirectors`
-    + `Admin`
-    + `Host`
-    + `Owner`
-    + `Internal`
-  + `prevent` 是否拦截原有事件触发
-  + `actions` 要执行的指令序列
-
-> `shortcuts` 是一项非常强大的配置功能。仙人掌扳手、仙人掌点击混凝土打印漏斗信息皆依赖此功能。
