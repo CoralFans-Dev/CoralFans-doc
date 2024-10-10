@@ -86,5 +86,4 @@
 ## shortcuts
 
 + 自定义快捷指令
-
-> `shortcuts` 是一项非常强大的配置功能。仙人掌扳手、仙人掌点击混凝土打印漏斗计数器信息皆依赖此功能。
++ 参见[ShortcutsDoc](/ShortcutsDoc.md)
