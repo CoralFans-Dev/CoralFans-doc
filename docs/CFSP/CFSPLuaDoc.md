@@ -1,151 +1,4 @@
-# CoralFans SimulatedPlayer (CFSP)
-
-> ## Tips
->
-> CFSP假人的XUID是固定的，等于 `"-" + std::to_string(std::hash<std::string>()(spname))`
->
-> 当前版本(BDS v1.21.3.01)MCBE中，假人在设置视角后的1 tick会自动将视角回正。脚本中可以设置视角后立刻执行动作以规避此问题。
->
-> 使用非 `stop` 指令执行的关服操作可能会造成数据丢失。插件不为此负责。
-
-## 指令系统
-
-```text
-/sp c autorespawn <isopen: bool>
-/sp c autojoin <isopen: bool>
-/sp list g
-/sp list p
-/sp g <name: string> create
-/sp g <name: string> delete
-/sp g <name: string> addsp <simplayer: string>
-/sp g <name: string> rmsp <simplayer: string>
-/sp g <name: string> addadmin <player: Player>
-/sp g <name: string> rmadmin <player: Player>
-/sp p <name: string> spawn
-/sp p <name: string> spawn pos <pos: x y z>
-/sp p <name: string> spawn pos <pos: x y z> rot <rotx: float> <roty: float>
-/sp g <name: string> spawn
-/sp p <name: string> despawn
-/sp g <name: string> despawn
-/sp p <name: string> rm
-/sp g <name: string> rm
-/sp p <name: string> respawn
-/sp g <name: string> respawn
-/sp p <name: string> stop
-/sp g <name: string> stop
-/sp p <name: string> sneaking <enable: bool>
-/sp g <name: string> sneaking <enable: bool>
-/sp p <name: string> swimming <enable: bool>
-/sp g <name: string> swimming <enable: bool>
-/sp p <name: string> attack [interval: int] [times: int]
-/sp g <name: string> attack [interval: int] [times: int]
-/sp p <name: string> chat <str: string> [interval: int] [times: int]
-/sp g <name: string> chat <str: string> [interval: int] [times: int]
-/sp p <name: string> destroy [interval: int] [times: int]
-/sp g <name: string> destroy [interval: int] [times: int]
-/sp p <name: string> drop
-/sp g <name: string> drop
-/sp p <name: string> dropinv
-/sp g <name: string> dropinv
-/sp p <name: string> swap
-/sp p <name: string> runcmd <str: string> [interval: int] [times: int]
-/sp g <name: string> runcmd <str: string> [interval: int] [times: int]
-/sp p <name: string> select <item: Item>
-/sp g <name: string> select <item: Item>
-/sp p <name: string> interact [interval: int] [times: int]
-/sp g <name: string> interact [interval: int] [times: int]
-/sp p <name: string> jump [interval: int] [times: int]
-/sp g <name: string> jump [interval: int] [times: int]
-/sp p <name: string> use [tick: int] [interval: int] [times: int]
-/sp g <name: string> use [tick: int] [interval: int] [times: int]
-/sp p <name: string> build [interval: int] [times: int]
-/sp g <name: string> build [interval: int] [times: int]
-/sp p <name: string> lookat [pos: x y z]
-/sp g <name: string> lookat [pos: x y z]
-/sp p <name: string> moveto [pos: x y z]
-/sp g <name: string> moveto [pos: x y z]
-/sp p <name: string> navto [pos: x y z]
-/sp g <name: string> navto [pos: x y z]
-/sp p <name: string> script <path: FilePath> [interval: int]
-/sp g <name: string> script <path: FilePath> [interval: int]
-```
-
-### 基本指令
-
-+ `sp c` 用于进行假人系统配置。仅假人管理员可执行
-  + `sp c autorespawn` 假人死亡自动重生
-  + `sp c autojoin` 关服时在线假人在开服时自动加入游戏
-+ `sp list` 用于列出相关信息
-  + `sp list g` 列出所有组信息
-  + `sp list p` 列出所有假人信息
-
-### 操作对象
-
-+ `sp p` 用于操作单一假人。仅假人拥有者或假人管理员可进行操作
-+ `sp g` 用于操作假人组。仅组内成员或假人管理员可进行操作
-+ `name` 用于指定假人或组的名字
-
-### 独有操作
-
-#### g (group)
-
-+ `create` 创建组
-+ `delete` 删除组
-+ `addsp <simplayer: string>` 加入假人
-+ `rmsp <simplayer: string>` 移出假人
-+ `addadmin <player: Player>` 加入成员
-+ `rmadmin <player: Player>` 移出成员
-
-#### p (player)
-
-+ `spawn pos <pos: x y z>` 在指定位置创建假人
-+ `spawn pos <pos: x y z> rot <rotx: float> <roty: float>` 在指定位置创建假人，并指定其视角
-+ `swap` 假人与执行该指令的玩家交换背包、副手、盔甲栏、末影箱
-
-### 共有操作
-
-+ 以下是一些可选参数的默认信息
-  + `interval` 默认20，单位tick
-  + `times` 默认1，为执行次数，若小于1则为无限执行
-  + `tick` 默认40，单位tick
-  + `pos` 默认为指向的方块/实体所在的位置
-
-#### 无参操作
-
-+ `spawn` 上线或创建（仅 `p` 操作）假人
-+ `despawn` 下线假人
-+ `rm` 删除假人
-+ `respawn` 假人重生
-+ `stop` 假人停止所有动作
-+ `drop` 假人丢出手持物品
-+ `dropinv` 假人丢出背包物品（不包括副手、盔甲栏、末影箱）
-
-#### 动作设置操作
-
-+ `sneaking <enable: bool>` 假人潜行
-+ `swimming <enable: bool>` 假人游泳/趴下
-
-#### 无参任务操作
-
-+ `attack [interval: int] [times: int]` 假人攻击
-+ `destroy [interval: int] [times: int]` 假人破坏
-+ `interact [interval: int] [times: int]` 假人交互
-+ `jump [interval: int] [times: int]` 假人跳跃
-+ `build [interval: int] [times: int]` 假人搭建方块
-
-#### 有参任务操作
-
-+ `chat <str: string> [interval: int] [times: int]` 假人发送 `str` 消息
-+ `runcmd <str: string> [interval: int] [times: int]` 假人执行 `str` 指令
-+ `use [tick: int] [interval: int] [times: int]` 假人使用物品， `tick` 后停止使用
-
-#### 其他操作
-
-+ `select <item: Item>` 假人在背包内搜索指定物品的同类物品并与手持物品切换
-+ `lookat [pos: x y z]` 假人看向指定位置
-+ `moveto [pos: x y z]` 假人移动到指定位置
-+ `navto [pos: x y z]` 假人寻路走到指定位置
-+ `script <path: FilePath> [interval: int]` 执行指定脚本。脚本寻找的基路径为 `plugins/CoralFans/data/simplayer/scripts/` 。 `interval` 为脚本 `Tick` 函数的执行间隔
+# CFSP Lua Api Doc
 
 ## 脚本系统
 
@@ -157,12 +10,12 @@
 
 ### 基本介绍
 
-脚本存放于 `plugins/CoralFans/data/simplayer/scripts/` 下。其内部至少应有两个函数： `Init` 和 `Tick` 。两个函数均返回 `boolean` 类型的值。若返回值为 `false` 则中断脚本执行。
+脚本存放于 `plugins/CoralFans/data/simplayer/scripts/` 下。其内部至少应有两个函数： `Init` 和 `Tick` 。两个函数均返回 `boolean` 类型的值。若返回值为 `false` 则中断脚本执行。特别地， `Init` 函数接受一个 `string` 类型的参数，这使得玩家可以通过指令向脚本传参。
 
 以下是一个最简单的可执行脚本。该脚本会执行一次 `Init` 函数与一次 `Tick` 函数。第一次执行 `Tick` 函数时就返回了 `false` ，故不会重复执行。
 
 ```lua
-function Init()
+function Init(arg)
     return true
 end
 function Tick()
@@ -183,7 +36,7 @@ end
 9. 如果第一次执行 `Tick` 函数返回 `true` ，则将 `Tick` 函数的执行交由调度器管理，继续执行。
 10. 若执行过程中出错/函数返回 `false` ，则中断执行。
 
-+ 你可以在[src/coral_fans/functions/SpLuaApi.cpp#L2131](https://github.com/CoralFans-Dev/CoralFans/blob/bbdb0deb188a8bbbc9a035138f3592cceace8eeb/src/coral_fans/functions/SpLuaApi.cpp#L2131)中找到更多信息
++ 你可以在[src/cfsp/simplayer/luaapi/SpLuaApi.cpp#L49](https://github.com/CoralFans-Dev/CFSP/blob/develop/src/cfsp/simplayer/luaapi/SpLuaApi.cpp#L49)中找到更多信息
 
 ### 内建数据
 
@@ -477,7 +330,7 @@ log(...)
 + 设定Tick执行间隔的时候优先使用script子命令内的参数，而不是使用脚本内计数器的方案，这样可以降低一定卡顿
 + 暂未性能进行测试，如果发现明显的掉刻，请优化自己编写的脚本，减少函数执行频率，甚至停止脚本的使用
 + 不使用该功能时不会产生任何额外的卡顿
-+ 如果发现任何（非编程上的）问题，请前往[GitHub](https://github.com/CoralFans-Dev/CoralFans/issues)反馈
++ 如果发现任何（非编程上的）问题，请前往[GitHub](https://github.com/CoralFans-Dev/CFSP/issues)反馈
 
 ### 实例
 
@@ -486,8 +339,8 @@ log(...)
 #### 假人播报消息
 
 ```lua
-function Init() -- 初始化函数
-    log(SimPlayer:getName(), SimPlayer:getXuid(), "script test1 run") -- 在控制台输出信息
+function Init(arg) -- 初始化函数
+    log(SimPlayer:getName(), SimPlayer:getXuid(), "script test1 run", arg) -- 在控制台输出信息
     return true -- 返回真以继续执行
 end
 
@@ -516,30 +369,32 @@ end
 ```lua
 TickTime = 0; -- 计时
 Stand = nil -- 所站方块位置
+Blocks = 0
 
-function Init() -- 初始化函数
-    log(SimPlayer:getName(), SimPlayer:getXuid(), "script test2 run") -- 在控制台输出信息
+function Init(arg) -- 初始化函数
+    log(SimPlayer:getName(), SimPlayer:getXuid(), "script test2 run", arg) -- 在控制台输出信息
     Stand = SimPlayer:getStandingOn() -- 记录所站方块坐标
     SimPlayer:select(12) -- 选中背包内的沙子
+    Blocks = tonumber(arg) -- 获取传入参数
+    SimPlayer:lookAt(Stand:center()) -- 看向脚下方块的中心
+    SimPlayer:startBuild() -- 开始搭建方块
     return true -- 返回真以继续执行
 end
 
 function Tick() -- 循环执行函数
-    if TickTime == 200 then return false end -- 如果执行了200gt，中断
+    if TickTime == 20 * Blocks then
+        SimPlayer:stopAction() -- 停止操作（搭建方块）
+        return false
+    end -- 如果执行了20 * Blocks gt，中断
     if TickTime % 20 == 0 then -- 每执行20gt
         Stand = SimPlayer:getStandingOn() -- 记录所站坐标
         SimPlayer:jump() -- 起跳
     end
-    local _, currentY, _ = SimPlayer:getPos():get() -- 记录假人眼部y坐标
-    local _, standY, _ = Stand:get() -- 记录所站方块y坐标
-    if (currentY - 1.62) - (standY + 1) >= 1 then -- 眼部y坐标-1.62=脚部y坐标，所站方块y坐标+1=方块顶部y坐标
-        SimPlayer:lookAt(Stand:center()) -- 看向脚下方块的中心
-        SimPlayer:startBuild() -- 搭建一次方块
-    end
+    SimPlayer:lookAt(Stand:center()) -- 看向脚下方块的中心
     TickTime = TickTime + 1 -- 计时器+1
     return true -- 返回真以执行下一次
 end
 ```
 
 + 保存脚本至 `plugins/CoralFans/data/simplayer/scripts/test2.lua`
-+ 执行指令 `sp p SIM-bot script test2.lua` ，可以让假人 `SIM-bot` 用背包里的沙子原地搭高10个方块
++ 执行指令 `sp p SIM-bot script test2.lua 1 10` ，可以让假人 `SIM-bot` 用背包里的沙子原地搭高10个方块

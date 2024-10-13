@@ -1,6 +1,6 @@
 ![icon](https://raw.githubusercontent.com/CoralFans-Dev/CoralFans-doc/main/docs/icon.png)
 
-# CoralFans <small>1.0.2</small>
+# CoralFans <small>2.0.0</small>
 
 > 这里是CoralFans Mod的文档站
 

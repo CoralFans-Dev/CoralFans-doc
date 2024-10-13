@@ -13,7 +13,7 @@
   + `blcok` 玩家点击的方块，对 `useon` type有效
   + `command` 自定义的短命令，对 `command` type有效
   + `description` 自定义短命令的描述，对 `command` type有效
-  + `permission` 自定义短命令的权限，对 `command` type有效。可选值同[config - adminPermission](/ConfigDoc.md#adminpermission)
+  + `permission` 自定义短命令的权限，对 `command` type有效。可选值同[config - permission](/ConfigDoc.md#permission)
   + `prevent` 是否拦截原有事件触发
   + `actions` 要执行的指令序列。您可以在其中使用一些内建变量，他们会在执行时被替换。
     + `{selfname}` 执行者真名

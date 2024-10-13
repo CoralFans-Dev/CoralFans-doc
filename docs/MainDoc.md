@@ -200,7 +200,8 @@
 ## sp
 
 + 假人
-+ 参见[CFSPDoc](/CFSPDoc.md)
++ 在CoralFans 2.0.0版本中，我们移除了假人系统，并将其做成了独立插件CFSP
++ 参见[CFSPCommandDoc](/CFSP/CFSPCommandDoc.md)
 
 ## tick
 

@@ -3,5 +3,9 @@
   + [MainDoc](/MainDoc.md)
   + [ConfigDoc](/ConfigDoc.md)
   + [ShortcutsDoc](/ShortcutsDoc.md)
-  + [CFSPDoc](/CFSPDoc.md)
+  + CFSP v2.0.0
+    + [CFSPConfigDoc](/CFSP/CFSPConfigDoc.md)
+    + [CFSPCommandDoc](/CFSP/CFSPCommandDoc.md)
+    + [CFSPLuaDoc](/CFSP/CFSPLuaDoc.md)
+    + [CFSPApiDoc](/CFSP/CFSPApiDoc.md)
   + [QA](/QA.md)
