@@ -307,6 +307,9 @@ log(...)
 | `navigateTo` | `vec3` | - | 假人寻路走到指定坐标 |
 | `isTaskFree` | - | `boolean` | 假人是否没有在执行动作 |
 | `stopAction` | - | - | 停止假人所有动作 |
+| `getFirstEmptySlot` | - | - | 获取假人背包内的第一个空位，全满返回-1 |
+| `tryPutIntoContainer` | `integer` | `integer` | 将假人背包内指定槽位的物品存放至指向容器。[返回值枚举](https://github.com/CoralFans-Dev/CFSP/blob/develop/src/cfsp/simplayer/CFSP.h#L284) |
+| `tryGetFromContainerWithName` | `string` | `integer` | 从指向容器获取一堆指定type的物品。[返回值枚举](https://github.com/CoralFans-Dev/CFSP/blob/develop/src/cfsp/simplayer/CFSP.h#L284) |
 
 ###### 元方法
 
