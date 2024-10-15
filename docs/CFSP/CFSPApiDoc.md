@@ -21,3 +21,4 @@ add_requires("levilamina", "timewheel", "CFSP")
 + 所有导出的函数都由 `CFSP_API` 标记。您可以查阅[src/cfsp/simplayer/CFSP.h](https://github.com/CoralFans-Dev/CFSP/blob/develop/src/cfsp/simplayer/CFSP.h)来查看您可以调用哪些函数。
 + 大部分函数的定义都是比较易懂的。你可以看指令系统是如何调用的来理解这些函数的意义。
 + 额外地，我们提供了一些接口以获取 `SimPlayerInfo` 以及相关信息。
++ `SimPlayerInfo` 的部分成员函数在自身指向游戏中假人的指针为空时会抛出错误。

@@ -76,6 +76,7 @@ log(...)
 | `newUnitY` | - | `vec3` | 构造C++中的 `Vec3::UNIT_Y` |
 | `newUnitZ` | - | `vec3` | 构造C++中的 `Vec3::UNIT_Z` |
 | `newZero` | - | `vec3` | 构造C++中的 `Vec3::ZERO` |
+| `newFromRotation` | `vec2` | `vec3` | 调用C++中的 `Vec3::directionFromRotation` |
 
 ###### 对于具体变量 ( `foo:bar()` 调用方式 )
 
@@ -143,6 +144,7 @@ log(...)
 | `newUnitY` | - | `vec2` | 构造C++中的 `Vec2::UNIT_Y` |
 | `newUnitX` | - | `vec2` | 构造C++中的 `Vec2::UNIT_X` |
 | `newZero` | - | `vec2` | 构造C++中的 `Vec2::ZERO` |
+| `newFromRotation` | `vec3` | `vec2` | 调用C++中的 `Vec3::rotationFromDirection` |
 
 ###### 对于具体变量 ( `foo:bar()` 调用方式 )
 
