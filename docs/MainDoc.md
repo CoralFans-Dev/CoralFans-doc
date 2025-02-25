@@ -12,6 +12,16 @@
 
 + `coralfans version` 打印当前版本信息
 
+## calculate
+
++ 统计游戏数据
+
+```text
+/calculate pt
+```
+
++ `calculate pt` 统计区块内计划刻数据
+
 ## cfhud
 
 + HUD信息显示
@@ -120,11 +130,7 @@
 /hsa show <isopen: Boolean>
 ```
 
-+ `hsa show` 开启或者关闭HSA显示，开启后插件会在游戏内有HSA的地方使用粒子画出结构的刷怪点（需要前置Mod与对应材质包），对于游戏内的四种刷怪点，插件有不同的颜色，具体如下所示：
-  + 女巫小屋 红色
-  + 地狱堡垒 绿色
-  + 海底神殿 黄色
-  + 掠夺者前哨站 蓝色
++ `hsa show` 开启或者关闭HSA显示，开启后插件会在游戏内有HSA的地方使用粒子画出结构的刷怪点起始位置（需要前置Mod与对应材质包），默认黑色，如若hsa点位重合，则会出现多种色彩叠加的情况
 
 ## log
 
@@ -133,10 +139,28 @@
 ```text
 /log levelseed
 /log pt
+/log rpt
 ```
 
 + `log levelseed` 打印存档种子
 + `log pt` 打印玩家所在区块的计划刻信息
++ `log rpt` 打印玩家所在区块的随机计划刻信息
+
+## minerule
+
++ 用于修改游戏规则
+
+```text
+/minerule fuck_bedrock_no_drop <IsOpen: Boolean>
+/minerule fuck_movingBlock_no_drop <IsOpen: Boolean>
+/minerule remove_portal_pigzombie_cd <IsOpen: Boolean>
+/minerule replicated_portal_sand_farm <IsOpen: Boolean>
+```
+
++ `minerule fuck_bedrock_no_drop` 还原旧版本基岩可掉落
++ `minerule fuck_movingBlock_no_drop` 修复movingBlock破坏时不掉落的bug
++ `minerule remove_portal_pigzombie_cd` 移除猪人15s传送cd
++ `minerule replicated_portal_sand_farm` 还原旧版本折跃门刷沙机
 
 ## prof
 
