@@ -104,6 +104,7 @@
 /func autototem <IsOpen: Boolean>
 /func autoitem <IsOpen: Boolean>
 /func fastdrop <IsOpen: Boolean>
+/func portaldisabled <IsOpen: Boolean>
 ```
 
 + `func forceopen` 强制开启容器
@@ -119,6 +120,7 @@
 + `func autototem` 自动补充图腾
 + `func autoitem` 物品自动补货
 + `func fastdrop` 快速扔出背包所有同类物品
++ `func portaldisabled` 玩家禁用传送门
 
 + func可以开启或者关闭部分功能的全局开关。功能分为两类，全局功能和个人功能。对于个人功能，需要使用func和self同时开启该功能才会生效；对于全局功能，只需要使用func指令开启，该功能则会令全服务器的所有玩家生效。
 
@@ -162,6 +164,16 @@
 + `minerule remove_portal_pigzombie_cd` 移除猪人15s传送cd
 + `minerule replicated_portal_sand_farm` 还原旧版本折跃门刷沙机
 
+## noclip
+
++ 创造模式无碰撞箱
+
+```text
+/noclip
+```
+
++ `noclip` 创造模式无碰撞箱
+
 ## prof
 
 + 拥有检查服务器健康程度以及定位卡顿源头的能力
@@ -191,22 +203,22 @@
 + 拥有调整个人功能配置的能力
 
 ```text
-/self noclip <IsOpen: Boolean>
 /self autotool <IsOpen: Boolean>
 /self autotool mindamage <mindamage: int>
 /self containerreader <IsOpen: Boolean>
 /self autototem <IsOpen: Boolean>
 /self autoitem <IsOpen: Boolean>
 /self fastdrop <IsOpen: Boolean>
+/self portaldisabled <IsOpen: Boolean>
 ```
 
-+ `self noclip` 创造模式无碰撞箱
 + `self autotool` 自动切换工具
   + `self autotool mindamage` 可以设置工具最小耐久值。低于耐久值的工具不会被自动选择
 + `self containerreader` 容器预览
 + `self autototem` 自动补充图腾
 + `self autoitem` 物品自动补货
 + `self fastdrop` 快速扔出背包所有同类物品
++ `self portaldisabled` 玩家禁用传送门
 + 当对应的功能没有在 `func` 指令中全局开启时， `self` 指令会一直将其配置为 `false`
 
 ## slime
