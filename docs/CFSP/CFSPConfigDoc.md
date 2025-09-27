@@ -1,16 +1,14 @@
 # CFSP配置文件
 
-## version
+## Config.json
 
-+ 配置文件的版本。 `2.2.1` 版CFSP为 `1`
+### version
 
-## locateName
++ Config.json配置文件的版本。 `3.0.0` 版CFSP为 `3`
 
-+ 插件语言。支持 `zh_CN` 与 `en_US`
+### permission
 
-## simPlayer
-
-+ 假人相关配置
++ 假人指令基础权限等级
 
 ### namePrefix
 
@@ -19,6 +17,18 @@
 ### namePostfix
 
 + 假人名称后缀
+
+### autoRespawn 
+
++ 假人死亡自动重生
+
+### autojoin
+
++ 关服时在线假人在开服时自动加入游戏
+
+### autoDespawn
+
++ 假人频繁死亡时自动下线
 
 ### maxOnline
 
@@ -30,12 +40,11 @@
 
 ### maxGroup
 
-+ 全局最多存在组个数
++ 单人最多拥有组个数
 
-### maxSpawnCount
+### autoDespawnCount & autoDespawninterval
 
-+ 最多生成假人次数
-+ 为防止内存泄漏，超过此次数后无法生成假人，重启服务器恢复
++ 开启autoDespawn时，当autoDespawninterval gt内死亡autoDespawnCount次，假人下线
 
 ### adminPermission
 
@@ -61,20 +70,28 @@
 + 名单
 + 字符串数组，值应为玩家UUID
 
+### superManagerList
+
++ 管理员名单
+
 ### luaPreload
 
 + lua预加载脚本内容
 + 该段内容的执行时机为加载库之后、加载内置变量与脚本文件之前
 + 可以用于禁用部分库，以创造安全的执行环境
 
-## command
+## PermissionConfig.h
 
-+ 指令配置
+### version
 
-### enabled
++ PermissionConfig.json配置文件的版本。 `3.0.0` 版CFSP为 `1`
+
+### func 
+
+#### enabled
 
 + 是否启用该指令
 
-### permission
+#### permission
 
 + 执行所需权限，可选值同[adminpermission](#adminpermission)
