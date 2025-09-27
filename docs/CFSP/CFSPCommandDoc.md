@@ -117,7 +117,7 @@
 + `sp p interact <name: cfspOnlineSp> [times: int] [interval: int]` 假人交互
 + `sp p jump <name: cfspOnlineSp> [times: int] [interval: int]` 假人跳跃
 
-##### 短操作
+##### 长操作
 
 + `sp p use <name: cfspOnlineSp> [long: int] [times: int] [interval: int]` 假人使用物品
 + `sp p destroy <name: cfspOnlineSp> [long: int] [times: int] [interval: int]` 假人挖掘
