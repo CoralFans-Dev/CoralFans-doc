@@ -2,7 +2,7 @@
 
 ## version
 
-+ 配置文件的版本。 `2.0.0` 版CoralFans为 `3`
++ 配置文件的版本。 `2.5.0` 版CoralFans为 `5`
 
 ## locateName
 
