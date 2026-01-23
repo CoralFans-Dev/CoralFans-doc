@@ -23,21 +23,32 @@ CoralFans插件依赖于LeviLamina加载器,而LeviLamina基于BedrockDedicatedS
 + **不建议中文路径**
   + 这可能会导致意料之外的行为,不建议中文路径
 + **开启Loop back**
-  + UWP应用默认关闭了loop back,你需要开启才能连接本地服务器,如果是**云服务器的多人游戏可以省去这一步**.以管理员权限打开 `powershell` ,并运行如下命令(该命令来自微软官网): `CheckNetIsolation.exe LoopbackExempt -a -p=S-1-15-2-1958404141-86561845-1752920682-3514627264-368642714-62675701-733520436`
+  + UWP应用默认关闭了loop back,你需要开启才能连接本地服务器,如果是**云服务器的多人游戏可以省去这一步**.以管理员权限打开 `powershell` ,并运行如下命令(该命令来自微软官网):
+```
+CheckNetIsolation.exe LoopbackExempt -a -p=S-1-15-2-1958404141-86561845-1752920682-3514627264-368642714-62675701-733520436
+```
 + **关闭cmd快速编辑**
   + windows默认cmd窗口启用快速编辑模式,这大概率会导致你的BDS程序阻塞,右键窗口选择**属性**,将**快速编辑模式**关闭即可
 
 ## 2.下载并安装前置
 
-1. 使用lip进行安装: `lip install github.com/OEOTYAN/BedrockServerClientInterface` .
-2. 在[前置插件](https://github.com/OEOTYAN/BedrockServerClientInterface)的 `assets` 文件夹下找到材质包,打包并安装进游戏,全局启用
+1. 使用lip进行安装:
+```
+lip install github.com/OEOTYAN/BedrockServerClientInterface
+``` 
+3. 在[前置插件](https://github.com/OEOTYAN/BedrockServerClientInterface)的 `assets` 文件夹下找到材质包,打包并安装进游戏,全局启用
 
 ## 3.下载并安装插件本体
 
-+ 使用lip进行安装: `lip install github.com/CoralFans-Dev/CoralFans` .
++ 使用lip进行安装:
+```
+lip install github.com/CoralFans- Dev/CoralFans
+```
 + 也可以手动安装
   1. 前往[CoralFans的下载页面](https://github.com/CoralFans-Dev/CoralFans/releases)下载发布的release文件
   2. 将解压后的插件放入服务端根目录下的 `plugins` 文件夹
+
+> **你是否需要**[**CoralFans SimulatedPlayer**](https://github.com/CoralFans-Dev/CFSP)
 
 ## 4.配置配置文件
 
