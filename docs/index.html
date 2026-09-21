@@ -27,12 +27,14 @@
       search: {
         maxAge: 86400000,
         paths: 'auto',
-        placeholder: '搜索',
         placeholder: {
-          '/zh-cn/': '搜索',
-          '/': 'Type to search'
+          '/en/': 'Type to search',
+          '/': '搜索'
         },
-        noData: '找不到结果',
+        noData: {
+          '/en/': 'No Results',
+          '/': '找不到结果'
+        },
         depth: 4,
         hideOtherSidebarContent: false,
         namespace: 'CoralFans-Document',
