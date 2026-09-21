@@ -4,7 +4,11 @@
 
 ### version
 
-+ Config.json配置文件的版本。 `3.0.0` 版CFSP为 `3`
++ Config.json配置文件的版本。当前版本（`26.51.x`）CFSP为 `3`
+
+### enabled
+
++ 是否启用假人系统
 
 ### permission
 
@@ -37,6 +41,10 @@
 ### maxOwn
 
 + 单人最多拥有假人数
+
+### maxOnlinePerPlayer
+
++ 单人最大同时在线假人数
 
 ### maxGroup
 
@@ -80,17 +88,19 @@
 + 该段内容的执行时机为加载库之后、加载内置变量与脚本文件之前
 + 可以用于禁用部分库，以创造安全的执行环境
 
-## PermissionConfig.h
+## PermissionConfig.json
 
 ### version
 
-+ PermissionConfig.json配置文件的版本。 `3.0.0` 版CFSP为 `1`
++ PermissionConfig.json配置文件的版本。当前版本CFSP为 `1`
 
-### func 
+### 功能项
+
++ 每一个功能项对应假人的一个操作（如 `spCreate`、`spSpawn`、`spLookAt`、`groupCreate` 等），均包含以下字段：
 
 #### enabled
 
-+ 是否启用该指令
++ 是否启用该指令/操作
 
 #### permission
 

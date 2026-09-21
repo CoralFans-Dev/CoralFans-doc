@@ -39,6 +39,12 @@ CoralFans插件依赖于LeviLamina加载器,而LeviLamina基于BedrockDedicatedS
   1. 前往[CoralFans的下载页面](https://github.com/CoralFans-Dev/CoralFans/releases)下载发布的release文件
   2. 将解压后的插件放入服务端根目录下的 `plugins` 文件夹
 
+### 客户端版
+
++ 自26.10起，CoralFans同时提供客户端版本，可配合客户端版LeviLamina使用
++ 使用lip进行安装: `lip install github.com/CoralFans-Dev/CoralFans#client`
++ 手动安装时，将客户端版压缩包解压后放入客户端 `mods` 文件夹
+
 ## 4.配置配置文件
 
 你可能需要根据需求关闭部分功能(如 `tick` ，漏斗计数器等)

@@ -19,38 +19,33 @@
 /sp list g
 /sp p create <name: string> [pos: Vec3] [dim: Dimension] [lockUniqueId: bool]
 /sp p spawn <name: cfspOfflineSp>
-/sp p despawn <name: cfspOnlineSp>
 /sp p respawn <name: cfspDeadSp>
 /sp p delete <name: cfspSplist> [force: bool]
-/sp p info <name: cfspOnlineSp>
-/sp p <drop|dropinv|swap|invinfo> <name: cfspOnlineSp>
+/sp p <despawn|stop|swap|info|invinfo> <name: cfspOnlineSp>
 /sp p select <name: cfspOnlineSp> <item: Item>
 /sp p <sneaking|swimming|flying|sprinting> <name: cfspOnlineSp> [enabled: bool]
-/sp p <attack|build|interact|jump> <name: cfspOnlineSp> [times: int] [interval: int]
+/sp p <attack|build|interact|jump|drop|dropinv> <name: cfspOnlineSp> [times: int] [interval: int]
 /sp p <use|destroy> <name: cfspOnlineSp> [long: int] [times: int] [interval: int]
-/sp p stop <name: cfspOnlineSp>
 /sp p <chat|runcmd> <name: cfspOnlineSp> <message: string>
 /sp p lookat <name: cfspOnlineSp> [pos: Vec3]
+/sp p lookat <name: cfspOnlineSp> <facing: north|south|west|east|up|down>
 /sp p <moveto|navto> <name: cfspOnlineSp> [pos: Vec3] [speed: float]
-/sp p tp <name: cfspOnlineSp> <pos: Vec3> <dim: Dimension>
+/sp p tp <name: cfspOnlineSp> [pos: Vec3] [dim: Dimension]
 /sp p perm <name: cfspSplist> <permType: cfspSpPermType> <player: player> <enable: bool>
 /sp p permpublic <name: cfspSplist> <permType: cfspSpPermType> <enable: bool>
 /sp g create <gname: string>
 /sp g <addsp|rmsp> <gname: cfspGroup> <spname: cfspSplist>
-/sp g delete <gname: cfspGroup>
+/sp g <delete|spawn|despawn|respawn|stop|info|invinfo> <gname: cfspGroup>
 /sp g deletesp <gname: cfspGroup> [force: bool]
-/sp g <spawn|despawn|respawn> <gname: cfspGroup>
-/sp g info <gname: cfspGroup>
-/sp g stop <gname: cfspGroup>
-/sp g <drop|dropinv|invinfo> <gname: cfspGroup>
-/sp g select <gname: cfspGroup> <item: Item>
 /sp g <sneaking|swimming|flying|sprinting> <gname: cfspGroup> [enabled: bool]
-/sp g <attack|build|interact|jump> <gname: cfspGroup> [times: int] [interval: int]
+/sp g <attack|build|interact|jump|drop|dropinv> <gname: cfspGroup> [times: int] [interval: int]
 /sp g <use|destroy> <gname: cfspGroup> [long: int] [times: int] [interval: int]
 /sp g <chat|runcmd> <gname: cfspGroup> <message: string>
 /sp g lookat <gname: cfspGroup> [pos: Vec3]
+/sp g lookat <gname: cfspGroup> <facing: north|south|west|east|up|down>
 /sp g <moveto|navto> <gname: cfspGroup> [pos: Vec3] [speed: float]
-/sp g tp <gname: cfspGroup> <pos: Vec3> <dim: Dimension>
+/sp g tp <gname: cfspGroup> [pos: Vec3] [dim: Dimension]
+/sp g select <gname: cfspGroup> <item: Item>
 /sp g perm <gname: cfspGroup> <permType: cfspGroupPermType> <player: player> <enable: bool>
 /sp g permpublic <gname: cfspGroup> <permType: cfspGroupPermType> <enable: bool>
 ```
@@ -61,7 +56,7 @@
 + `sp c` 用于进行假人系统配置。仅假人管理员可执行
   + `sp c autojoin` 关服时在线假人在开服时自动加入游戏
   + `sp c autorespawn` 假人死亡自动重生
-  + `sp c autordespawn` 假人频繁死亡时自动下线
+  + `sp c autodespawn` 假人频繁死亡时自动下线
 + `sp list` 用于列出相关信息
   + `sp list p [online|offline]` 列出所有/在线/离线假人信息
   + `sp list g` 列出所有组信息
@@ -81,6 +76,7 @@
   + `pos` 假人创建坐标,当玩家视线范围内有方块时，默认玩家看向的位置，否则默认玩家当前位置
   + `dim` 假人创建维度，默认玩家当前维度
   + `lockUniqueId` 是否锁定假人uniqueId，如果锁定则假人上下线后不会与三叉戟失去联系，如果不锁定则可以通过上下线假人反复开启试炼宝库
+  + 创建假人时，假人的游戏模式将与创建者保持一致
 + `sp p spawn <name: cfspOfflineSp>` 上线假人
 + `sp p despawn <name: cfspOnlineSp>` 下线假人
 + `sp p respawn <name: cfspDeadSp>` 假人重生
@@ -91,8 +87,8 @@
 #### 背包操作
 
 + `sp p invinfo <name: cfspOnlineSp>` 假人背包信息
-+ `sp p drop <name: cfspOnlineSp>` 假人丢弃手持物品
-+ `sp p dropinv <name: cfspOnlineSp>` 假人丢弃物品栏内全部物品
++ `sp p drop <name: cfspOnlineSp> [times: int] [interval: int]` 假人丢弃手持物品
++ `sp p dropinv <name: cfspOnlineSp> [times: int] [interval: int]` 假人丢弃物品栏内全部物品
 + `sp p swap <name: cfspOnlineSp>` 与假人交换背包（包括装备与末影箱）
 + `sp p select <name: cfspOnlineSp> <item: Item>` 假人在背包中搜索物品并与手持物品切换
 
@@ -126,6 +122,7 @@
 
 + `sp p lookat <name: cfspOnlineSp> [pos: Vec3]` 假人看向操作
   + `pos` 假人看向的坐标，当玩家视线范围内有方块时，默认玩家看向的位置，否则默认玩家当前位置
++ `sp p lookat <name: cfspOnlineSp> <facing: north|south|west|east|up|down>` 假人看向指定方向
 
 #### 消息操作
 
@@ -142,7 +139,7 @@
 
 + `sp p moveto <name: cfspOnlineSp> [pos: Vec3] [speed: float]` 假人移动操作
 + `sp p navto <name: cfspOnlineSp> [pos: Vec3] [speed: float]` 假人寻路操作
-+ `sp p tp <name: cfspOnlineSp> <pos: Vec3> <dim: Dimension>` 假人传送操作
++ `sp p tp <name: cfspOnlineSp> [pos: Vec3] [dim: Dimension]` 假人传送操作
 
 #### 停止操作
 
@@ -151,7 +148,7 @@
 #### 权限管理
 
 + 参数含义
-  + `permType` 权限类别
+  + `permType` 权限类别，可选值：`all`(全部权限)、`Spawn`、`Despawn`、`Respawn`、`Delete`、`Stop`、`Drop`、`DropInv`、`Swap`、`Sneaking`、`Swimming`、`Flying`、`Sprinting`、`Attack`、`Build`、`Interact`、`Jump`、`Use`、`Destroy`、`Chat`、`RunCmd`、`Select`、`LookAt`、`MoveTo`、`NavTo`、`Tp`、`BeAddedToGroup`(允许被添加到假人组)
   + `player` 目标玩家
   + `enable` 是否允许
 
@@ -175,20 +172,21 @@
 + `sp g <spawn|despawn|respawn> <gname: cfspGroup>`
 + `sp g info <gname: cfspGroup>`
 + `sp g stop <gname: cfspGroup>`
-+ `sp g <drop|dropinv|invinfo> <gname: cfspGroup>`
++ `sp g <drop|dropinv|invinfo> <gname: cfspGroup>`（`drop`与`dropinv`支持 `[times: int] [interval: int]` 参数）
 + `sp g select <gname: cfspGroup> <item: Item>`
 + `sp g <sneaking|swimming|flying|sprinting> <gname: cfspGroup> [enabled: bool]`
 + `sp g <attack|build|interact|jump> <gname: cfspGroup> [times: int] [interval: int]`
 + `sp g <use|destroy> <gname: cfspGroup> [long: int] [times: int] [interval: int]`
 + `sp g <chat|runcmd> <gname: cfspGroup> <message: string>`
 + `sp g lookat <gname: cfspGroup> [pos: Vec3]`
++ `sp g lookat <gname: cfspGroup> <facing: north|south|west|east|up|down>`
 + `sp g <moveto|navto> <gname: cfspGroup> [pos: Vec3] [speed: float]`
-+ `sp g tp <gname: cfspGroup> <pos: Vec3> <dim: Dimension>`
++ `sp g tp <gname: cfspGroup> [pos: Vec3] [dim: Dimension]`
 
 #### 权限管理
 
 + 参数含义
-  + `permType` 权限类别
+  + `permType` 权限类别，可选值：`all`(全部权限)、`AddSp`、`RmSp`、`Delete`、`Spawn`、`Despawn`、`Respawn`、`DeleteSp`、`Stop`、`Drop`、`DropInv`、`Sneaking`、`Swimming`、`Flying`、`Sprinting`、`Attack`、`Build`、`Interact`、`Jump`、`Use`、`Destroy`、`Chat`、`RunCmd`、`LookAt`、`MoveTo`、`NavTo`、`Tp`、`Select`
   + `player` 目标玩家
   + `enable` 是否允许
 
