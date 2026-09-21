@@ -1,12 +1,12 @@
 # Q&A
 
-## Linux能用吗
+## Linux/Android/Mac/IOS能用吗
 
-不直接能。目前LeviLamina和CF都没有直接支持Linux系统。你可能需要 `wine` 等工具模拟Windows环境来运行。
+不直接能。目前LeviLamina和CF都没有直接支持Linux/Android/Mac/IOS系统。你可能需要 `wine` 等工具模拟Windows环境来运行。
 
-## 单人/手机能用吗
+## 手机能用吗
 
-不直接能。CF是服务器插件，你可以开一个本地服务器来运行，然后单人/用手机加入服务器。
+不直接能。CF只支持windows，不过你可以开一个本地服务器来运行，然后单人/用手机加入服务器。
 
 ## Realms领域服能用吗
 
@@ -20,12 +20,6 @@
 
 如果是教程有表达不清楚的地方，欢迎提Issue/PR。
 
-## I'm not good at Chinese
-
-Sorry, I'm not good at English. -- odorajbotoj
-
-I18N coming soon.
-
 ## 我的可视化不显示怎么办
 
 检查前置资源包是否加载并全局启用。
@@ -36,14 +30,8 @@ CF目前基于LL 26.51.x，BDS版本为1.26.51。CoralFans与LeviLamina版本号
 
 ## 客户端（非服务器）能用吗
 
-可以。自26.10起，CF适配了客户端版LeviLamina，可作为客户端Mod安装（放置于 `mods/` 目录），此时键盘快捷键等功能可用。
+Windows可以，其他不行。自26.10起，CF适配了客户端版LeviLamina，可作为客户端Mod安装（放置于 `mods/` 目录），此时键盘快捷键等功能可用。
 
 ## 会适配新版吗
 
 取决于加载器能不能更新
-
-## 假人总是崩怎么办
-
-注意，CF旧版本自带的假人系统与CFSP并不兼容，且含有较多bug。请更新您的CF与CFSP
-
-你可以分析log文件并提出issue。我们会阅读的。

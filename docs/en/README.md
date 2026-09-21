@@ -8,7 +8,6 @@
   + `CFSPDoc` simulated player documentation
   + `QA` Q&A
 + Contributions to this documentation site are welcome
-  + We need: documentation maintenance and improvements
 
 ## What is this
 
@@ -26,8 +25,9 @@ You can think of CF as the successor of the LL2 Trapdoor plugin. However, CF sti
 
 ### About the contributors
 
-+ [odorajbotoj](https://github.com/odorajbotoj) main maintainer of the plugin
-+ [hhhxiao](https://github.com/hhhxiao) main maintainer of Trapdoor-ll
++ [8848yyds](https://github.com/kuangby) main developer of the plugin
++ [odorajbotoj](https://github.com/odorajbotoj) former developer of the plugin
++ [hhhxiao](https://github.com/hhhxiao) main developer of Trapdoor-ll
 + [OEOTYAN](https://github.com/OEOTYAN) developer of the prerequisite mod, provider of part of the source code
 + [glibcxx](https://github.com/glibcxx) provider of part of the source code
 + [JiaLe1135](https://github.com/JiaLe1135) documentation contributor

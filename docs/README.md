@@ -8,7 +8,6 @@
   + `CFSPDoc` 假人文档
   + `QA` Q&A
 + 欢迎参与文档站建设
-  + 我们需要：文档英文翻译建设
 
 ## 这是什么
 
@@ -26,8 +25,9 @@ CoralFans珊瑚扇（简称CF）是一个基于Minecraft BDS with LeviLamina的�
 
 ### 关于贡献者
 
-+ [odorajbotoj](https://github.com/odorajbotoj) 插件主要维护者
-+ [hhhxiao](https://github.com/hhhxiao) Trapdoor-ll的主要维护者
++ [8848yyds](https://github.com/kuangby) 插件主要开发者
++ [odorajbotoj](https://github.com/odorajbotoj) 插件前开发者
++ [hhhxiao](https://github.com/hhhxiao) Trapdoor-ll的主要开发者
 + [OEOTYAN](https://github.com/OEOTYAN) 前置Mod开发，部分源码提供
 + [glibcxx](https://github.com/glibcxx) 部分源代码提供
 + [JiaLe1135](https://github.com/JiaLe1135) 文档贡献
